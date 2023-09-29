@@ -1,6 +1,6 @@
 # FinGPT-AI-Research
 
-## Replicating FinGPT
+## Replicating FinGPT (Supervised fine-tuning (SFT))
 
 ### Inference
 Utilized the FinGPT API from Hugging Face for direct inference and reported test results. [Benchmarks](https://github.com/Weiyao-Li/FinGPT-AI-Research/blob/main/benchmarks.ipynb)
