@@ -20,8 +20,6 @@ if os.path.exists(jsonl_path):
 if os.path.exists(save_path):
     shutil.rmtree(save_path)
 
-import os
-
 directory = "../data"
 if not os.path.exists(directory):
     os.makedirs(directory)
@@ -81,8 +79,6 @@ with open("../data/dataset_new.jsonl", 'w') as f:
         f.write(json.dumps(format_example(example)) + '\n')
 
 """Tokenize"""
-
-import json
 from tqdm.notebook import tqdm
 
 import datasets
