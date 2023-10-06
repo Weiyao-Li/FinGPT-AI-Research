@@ -10,3 +10,8 @@ Employed a base model(ChatGLM2-6B) to follow the LoRA training process. Compared
 
 ### Base Model Comparison
 Conducted experiments with multiple base models for LoRA training, including InternLM, Falcon, llama2, and ChatGLM2. Compared their respective performances. 
+
+### Related Articles
+[Beginner’s Guide to FinGPT: Training with LoRA and ChatGLM2–6B](https://byfintech.medium.com/beginners-guide-to-fingpt-training-with-lora-chatglm2-6b-9eb5ace7fe99)
+
+[Replicate FinGPT Sentiment Analysis Task with Google Colab](https://medium.com/p/f0bad1fd7934)
