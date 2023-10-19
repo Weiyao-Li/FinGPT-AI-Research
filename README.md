@@ -17,6 +17,6 @@ Conducted experiments with multiple base models for LoRA training, including Int
 - [Replicate FinGPT Sentiment Analysis Task with Google Colab](https://medium.com/p/f0bad1fd7934)
 
 ### FinGPT
-- [GitHub](https://huggingface.co/FinGPT)
+- [GitHub](https://github.com/AI4Finance-Foundation/FinGPT)
 
 - [Hugging Face](https://huggingface.co/FinGPT)
