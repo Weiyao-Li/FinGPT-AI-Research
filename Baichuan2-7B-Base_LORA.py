@@ -337,16 +337,19 @@ batch_size = 16
 
 # TFNS
 res = test_tfns(model, tokenizer, batch_size = batch_size)
+print("TFNS", res)
 
 # FPB
 res = test_fpb(model, tokenizer, batch_size = batch_size)
-
+print("FRB", res)
 
 # FiQA
 res = test_fiqa(model, tokenizer, prompt_fun = add_instructions, batch_size = batch_size)
+print("FiQA", res)
 
 # NWGI
 res = test_nwgi(model, tokenizer, batch_size = batch_size)
+print("NWGI", res)
 
 
 
