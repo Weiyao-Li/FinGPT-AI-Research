@@ -1,5 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
+pip install datasets transformers torch tqdm pandas huggingface_hub
+pip install protobuf transformers==4.30.2 cpm_kernels torch>=2.0 gradio mdtex2html sentencepiece accelerate
+pip install torch torchvision torchaudio
+pip install transformers
+pip install loguru
+pip install datasets
+pip install peft
+pip install bitsandbytes
+pip install tensorboard
+pip install sentencepiece
+pip install accelerate -U
+pip install transformers==4.30.2 peft==0.4.0
+pip install sentencepiece
+pip install accelerate
+pip install torch
+pip install peft
+pip install datasets
+pip install bitsandbytes
+pip install --upgrade peft
 
 # In[1]:
 
