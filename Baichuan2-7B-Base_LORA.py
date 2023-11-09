@@ -41,7 +41,7 @@ print(tmp_dataset.num_rows)
 all_dataset = train_dataset.shuffle(seed = 42)
 
 import json
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 def format_example(example: dict) -> dict:
     context = f"Instruction: {example['instruction']}\n"
@@ -64,7 +64,7 @@ with open("../data/dataset_new.jsonl", 'w') as f:
         f.write(json.dumps(format_example(example)) + '\n')
 
 
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 from transformers import AutoTokenizer, AutoConfig
 
