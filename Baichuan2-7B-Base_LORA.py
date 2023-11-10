@@ -326,7 +326,7 @@ from finnlp.benchmarks.nwgi import test_nwgi
 base_model = "baichuan-inc/Baichuan2-7B-Base"
 peft_model = training_args.output_dir
 
-tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True, padding_side='left')
 model = AutoModelForCausalLM.from_pretrained(base_model, trust_remote_code=True, load_in_4bit=True, device_map="auto")
 
 model = PeftModel.from_pretrained(model, peft_model)
