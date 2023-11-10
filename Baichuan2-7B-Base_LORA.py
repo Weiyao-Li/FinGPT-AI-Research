@@ -333,7 +333,7 @@ model = PeftModel.from_pretrained(model, peft_model)
 
 model = model.eval()
 
-batch_size = 16
+batch_size = 8
 
 # TFNS
 res = test_tfns(model, tokenizer, batch_size = batch_size)
