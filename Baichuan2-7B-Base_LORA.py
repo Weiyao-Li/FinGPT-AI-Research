@@ -173,7 +173,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Load tokenizer & model
 model_name = "baichuan-inc/Baichuan2-7B-Base"
-tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side='left', trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(
         model_name,
         quantization_config=q_config,
