@@ -151,7 +151,7 @@ training_args = TrainingArguments(
         gradient_accumulation_steps=8,
         learning_rate=1e-4,
         weight_decay=0.01,
-        warmup_steps=1000,
+        warmup_steps=500,
         save_steps=500,
         fp16=True,
         # bf16=True,
@@ -197,7 +197,7 @@ def print_trainable_parameters(model):
     )
 
 # LoRA
-TRANSFORMERS_MODELS_TO_LORA_TARGET_MODULES_MAPPING['baichuan-inc/Baichuan2-7B-Base'] = ["W_pack", "o_proj"]
+TRANSFORMERS_MODELS_TO_LORA_TARGET_MODULES_MAPPING['baichuan-inc/Baichuan2-7B-Base'] = ["W_pack"]
 target_modules = TRANSFORMERS_MODELS_TO_LORA_TARGET_MODULES_MAPPING['baichuan-inc/Baichuan2-7B-Base']
 lora_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
