@@ -30,7 +30,7 @@ from utils import *
 
 
 # Replace with your own api_key and project name
-os.environ['WANDB_API_KEY'] = 'ecf1e5e4f47441d46822d38a3249d62e8fc94db4'
+os.environ['WANDB_API_KEY'] = '14b3cf25fb7dd1806db45e0dd2c68e83308daa04'
 os.environ['WANDB_PROJECT'] = 'fingpt-benchmark'
 
 
