@@ -18,7 +18,8 @@ lora_module_dict = {
     'qwen': ["c_attn"],
     'mpt': ['Wqkv'],
     # 'baichuan': ['q_proj', 'k_proj', 'v_proj'],
-    'baichuan': ['W_pack', 'o_proj', 'gate_proj', 'up_proj', 'down_proj']
+    # 'baichuan': ['W_pack', 'o_proj', 'gate_proj', 'up_proj', 'down_proj']
+    'baichuan': ['q_proj', 'v_proj']
 
 }
 
