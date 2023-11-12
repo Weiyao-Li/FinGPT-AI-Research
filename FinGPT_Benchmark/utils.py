@@ -191,9 +191,7 @@ def load_dataset(names, from_remote=False):
                 raise ValueError("Replication factor must be a positive integer.")
 
         # Construct the correct dataset path or name based on the source location
-        # dataset_path_or_name = ('FinGPT/fingpt-' if from_remote else 'data/fingpt-') + dataset_name
-        dataset_path_or_name = os.path.join('data', dataset_name)  # Adjusted to directly use dataset_name
-
+        dataset_path_or_name = ('FinGPT/fingpt-' if from_remote else 'data/fingpt-') + dataset_name
         if not os.path.exists(dataset_path_or_name) and not from_remote:
             raise FileNotFoundError(f"The dataset path {dataset_path_or_name} does not exist.")
 
