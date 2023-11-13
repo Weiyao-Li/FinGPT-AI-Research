@@ -1,7 +1,8 @@
-from FinNLP/finnlp.benchmarks.fpb import test_fpb
-from FinNLP/finnlp.benchmarks.fiqa import test_fiqa , add_instructions
-from FinNLP/finnlp.benchmarks.tfns import test_tfns
-from FinNLP/finnlp.benchmarks.nwgi import test_nwgi
+from FinNLP.finnlp.benchmarks.fpb import test_fpb
+from FinNLP.finnlp.benchmarks.fiqa import test_fiqa , add_instructions
+from FinNLP.finnlp.benchmarks.tfns import test_tfns
+from FinNLP.finnlp.benchmarks.nwgi import test_nwgi
+
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
