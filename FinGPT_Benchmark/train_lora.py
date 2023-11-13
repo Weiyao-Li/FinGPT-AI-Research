@@ -5,7 +5,6 @@ from datetime import datetime
 from functools import partial
 import datasets
 import torch
-from torch import nn
 from torch.utils.tensorboard import SummaryWriter
 import wandb
 from transformers import (
