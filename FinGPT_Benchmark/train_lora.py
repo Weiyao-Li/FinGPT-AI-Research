@@ -126,24 +126,25 @@ def main(args):
     )
     # model = prepare_model_for_int8_training(model
 
-    def find_target_modules(model):
-        # Initialize a Set to Store Unique Layers
-        unique_layers = set()
+    # def find_target_modules(model):
+    #     # Initialize a Set to Store Unique Layers
+    #     unique_layers = set()
+    #
+    #     # Iterate Over All Named Modules in the Model
+    #     for name, module in model.named_modules():
+    #         # Check if the Module Type Contains 'Linear'
+    #         if "Linear" in str(type(module)):
+    #             # Extract the Type of the Layer
+    #             layer_type = name.split('.')[-1]
+    #
+    #             # Add the Layer Type to the Set of Unique Layers
+    #             unique_layers.add(layer_type)
+    #
+    #     # Return the Set of Unique Layers Converted to a List
+    #     return list(unique_layers)
+    #
+    # modules = find_target_modules(model)
 
-        # Iterate Over All Named Modules in the Model
-        for name, module in model.named_modules():
-            # Check if the Module Type Contains 'Linear'
-            if "Linear" in str(type(module)):
-                # Extract the Type of the Layer
-                layer_type = name.split('.')[-1]
-
-                # Add the Layer Type to the Set of Unique Layers
-                unique_layers.add(layer_type)
-
-        # Return the Set of Unique Layers Converted to a List
-        return list(unique_layers)
-
-    modules = find_target_modules(model)
     # setup peft for lora
     peft_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -151,8 +152,8 @@ def main(args):
         r=8,
         lora_alpha=32,
         lora_dropout=0.1,
-        # target_modules=lora_module_dict[args.base_model],
-        target_modules=modules,
+        target_modules=lora_module_dict[args.base_model],
+        # target_modules=modules,
         bias='none',
     )
     model = get_peft_model(model, peft_config)
