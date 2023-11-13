@@ -7,8 +7,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 from utils import *
 
-FROM_REMOTE = False
-
 
 def load_model(base_model, peft_model, from_remote=False):
     model_name = parse_model_name(base_model, from_remote)
@@ -35,7 +33,8 @@ def load_model(base_model, peft_model, from_remote=False):
 
 if __name__ == "__main__":
     base_model = 'baichuan'
-    peft_model = '/data/gpu/bruce_yang/weiyaoli/FinGPT-AI-Research/FinGPT_Benchmark/finetuned_models/sentiment-baichuan-7b-20epoch-8batch_202311130422#'
+    peft_model = 'finetuned_models/sentiment-baichuan-7b-20epoch-8batch_202311130422#'
+    FROM_REMOTE = False
 
     model, tokenizer = load_model(base_model, peft_model, FROM_REMOTE)
 
