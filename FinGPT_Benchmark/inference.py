@@ -9,7 +9,7 @@ from utils import *
 
 
 def load_model(base_model, peft_model, from_remote=False):
-    model_name = parse_model_name(base_model, from_remote)
+    model_name = base_model
 
     model = AutoModelForCausalLM.from_pretrained(
         model_name, trust_remote_code=True,
@@ -31,8 +31,9 @@ def load_model(base_model, peft_model, from_remote=False):
     model = model.eval()
     return model, tokenizer
 
+
 if __name__ == "__main__":
-    base_model = 'baichuan'
+    base_model = 'baichuan-inc/Baichuan2-7B-Base'
     peft_model = 'finetuned_models/sentiment-baichuan-7b-20epoch-8batch_202311130422#'
     FROM_REMOTE = False
 
