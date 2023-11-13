@@ -31,8 +31,8 @@ def change_target(x):
 
 def test_tfns(args, model, tokenizer, prompt_fun=None):
     batch_size = args.batch_size
-    # dataset = load_dataset('zeroshot/twitter-financial-news-sentiment')
-    dataset = load_from_disk('../data/twitter-financial-news-sentiment')
+    dataset = load_dataset('zeroshot/twitter-financial-news-sentiment')
+    # dataset = load_from_disk('../data/twitter-financial-news-sentiment')
     dataset = dataset['validation']
     dataset = dataset.to_pandas()
     dataset['label'] = dataset['label'].apply(lambda x:dic[x])

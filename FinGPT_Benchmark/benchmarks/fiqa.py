@@ -57,8 +57,8 @@ def vote_output(x):
 
 def test_fiqa(args, model, tokenizer, prompt_fun=add_instructions):
     batch_size = args.batch_size
-    # dataset = load_dataset('pauri32/fiqa-2018')
-    dataset = load_from_disk('../data/fiqa-2018/')
+    dataset = load_dataset('pauri32/fiqa-2018')
+    # dataset = load_from_disk('../data/fiqa-2018/')
     dataset = datasets.concatenate_datasets([dataset["train"], dataset["validation"] ,dataset["test"] ])
     dataset = dataset.train_test_split(0.226, seed = 42)['test']
     dataset = dataset.to_pandas()

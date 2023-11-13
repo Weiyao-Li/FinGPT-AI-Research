@@ -33,9 +33,9 @@ def map_output(feature):
 
 
 def test_headline(args, model, tokenizer):
-    
+    dataset = load_dataset('FinGPT/fingpt-headline')['test']
     # dataset = load_from_disk('../data/fingpt-headline')['test']#.select(range(300))
-    dataset = load_from_disk('../data/fingpt-headline-instruct')['test']#.select(range(300))
+    # dataset = load_from_disk('../data/fingpt-headline-instruct')['test']#.select(range(300))
     dataset = dataset.map(partial(test_mapping, args), load_from_cache_file=False)
     
     def collate_fn(batch):

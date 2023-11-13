@@ -32,8 +32,9 @@ def map_output(feature):
 
 
 def test_fineval(args, model, tokenizer):
+    dataset = load_dataset('FinGPT/fingpt-fineval')['test']
 
-    dataset = load_from_disk('../data/fingpt-fineval')['test']#.select(range(30))
+    # dataset = load_from_disk('../data/fingpt-fineval')['test']#.select(range(30))
     dataset = dataset.map(partial(test_mapping, args), load_from_cache_file=False)
     
     def collate_fn(batch):

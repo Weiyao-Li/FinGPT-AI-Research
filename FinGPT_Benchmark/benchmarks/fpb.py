@@ -51,8 +51,8 @@ def vote_output(x):
     
 def test_fpb(args, model, tokenizer, prompt_fun=None):
     batch_size = args.batch_size
-    # instructions = load_dataset("financial_phrasebank", "sentences_50agree")
-    instructions = load_from_disk("../data/financial_phrasebank-sentences_50agree/")
+    instructions = load_dataset("financial_phrasebank", "sentences_50agree")
+    # instructions = load_from_disk("../data/financial_phrasebank-sentences_50agree/")
     instructions = instructions["train"]
     instructions = instructions.train_test_split(seed = 42)['test']
     instructions = instructions.to_pandas()
@@ -105,8 +105,8 @@ def test_fpb(args, model, tokenizer, prompt_fun=None):
 
 def test_fpb_mlt(args, model, tokenizer):
     batch_size = args.batch_size
-    # instructions = load_dataset("financial_phrasebank", "sentences_50agree")
-    dataset = load_from_disk('../data/financial_phrasebank-sentences_50agree/')
+    dataset = load_dataset("financial_phrasebank", "sentences_50agree")
+    # dataset = load_from_disk('../data/financial_phrasebank-sentences_50agree/')
     dataset = dataset["train"]#.select(range(300))
     dataset = dataset.train_test_split(seed=42)['test']
     dataset = dataset.to_pandas()
