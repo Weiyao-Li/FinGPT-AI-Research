@@ -27,6 +27,7 @@ from peft import (
     set_peft_model_state_dict
 )
 from utils import *
+import bitsandbytes as bnb
 
 
 # Replace with your own api_key and project name
@@ -127,6 +128,22 @@ def main(args):
     )
     # model = prepare_model_for_int8_training(model
 
+    # 定义一个函数，用于找到模型中所有的线性层的名称
+    def find_all_linear_names(model):
+        cls = bnb.nn.Linear4bit
+        lora_module_names = set()
+        for name, module in model.named_modules():  # 遍历模型中的所有模块
+            if isinstance(module, cls):  # 如果模块是线性层
+                names = name.split('.')
+                lora_module_names.add(names[0] if len(names) == 1 else names[-1])  # 添加到线性层名称集合中
+
+        if 'lm_head' in lora_module_names:  # 如果'lm_head'在名称集合中，需要移除
+            lora_module_names.remove('lm_head')
+        return list(lora_module_names)  # 返回线性层名称列表
+
+    # 获取所有的线性层的名称
+    modules = find_all_linear_names(model)
+
     # setup peft for lora
     peft_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -134,7 +151,7 @@ def main(args):
         r=8,
         lora_alpha=32,
         lora_dropout=0.1,
-        target_modules=lora_module_dict[args.base_model],
+        target_modules=modules,
         bias='none',
     )
     model = get_peft_model(model, peft_config)
