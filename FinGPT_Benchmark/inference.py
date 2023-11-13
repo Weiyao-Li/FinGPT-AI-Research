@@ -1,14 +1,15 @@
 from FinNLP.finnlp.benchmarks.fpb import test_fpb
-from FinNLP.finnlp.benchmarks.fiqa import test_fiqa , add_instructions
+from FinNLP.finnlp.benchmarks.fiqa import test_fiqa, add_instructions
 from FinNLP.finnlp.benchmarks.tfns import test_tfns
 from FinNLP.finnlp.benchmarks.nwgi import test_nwgi
-
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 from utils import *
 
 FROM_REMOTE = False
+
+
 def load_model(base_model, peft_model, from_remote=False):
     model_name = parse_model_name(base_model, from_remote)
 
@@ -32,20 +33,21 @@ def load_model(base_model, peft_model, from_remote=False):
     model = model.eval()
     return model, tokenizer
 
-base_model = 'baichuan'
-peft_model = '/data/gpu/bruce_yang/weiyaoli/FinGPT-AI-Research/FinGPT_Benchmark/finetuned_models/sentiment-baichuan-7b-20epoch-8batch_202311130422#'
+if __name__ == "__main__":
+    base_model = 'baichuan'
+    peft_model = '/data/gpu/bruce_yang/weiyaoli/FinGPT-AI-Research/FinGPT_Benchmark/finetuned_models/sentiment-baichuan-7b-20epoch-8batch_202311130422#'
 
-model, tokenizer = load_model(base_model, peft_model, FROM_REMOTE)
+    model, tokenizer = load_model(base_model, peft_model, FROM_REMOTE)
 
-batch_size = 8
-res = test_tfns(model, tokenizer, batch_size = batch_size)
-print("tfns", res)
+    batch_size = 8
+    res = test_tfns(model, tokenizer, batch_size=batch_size)
+    print("tfns", res)
 
-res = test_fpb(model, tokenizer, batch_size = batch_size)
-print("fpb", res)
+    res = test_fpb(model, tokenizer, batch_size=batch_size)
+    print("fpb", res)
 
-res = test_fiqa(model, tokenizer, prompt_fun = add_instructions, batch_size = batch_size)
-print("fiqa", res)
+    res = test_fiqa(model, tokenizer, prompt_fun=add_instructions, batch_size=batch_size)
+    print("fiqa", res)
 
-res = test_nwgi(model, tokenizer, batch_size = batch_size)
-print("nwgi", res)
+    res = test_nwgi(model, tokenizer, batch_size=batch_size)
+    print("nwgi", res)
