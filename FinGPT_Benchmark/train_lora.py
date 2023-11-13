@@ -5,6 +5,7 @@ from datetime import datetime
 from functools import partial
 import datasets
 import torch
+from torch import nn
 from torch.utils.tensorboard import SummaryWriter
 import wandb
 from transformers import (
@@ -27,8 +28,6 @@ from peft import (
     set_peft_model_state_dict
 )
 from utils import *
-import bitsandbytes as bnb
-
 
 # Replace with your own api_key and project name
 os.environ['WANDB_API_KEY'] = '14b3cf25fb7dd1806db45e0dd2c68e83308daa04'
@@ -130,7 +129,7 @@ def main(args):
 
     # 定义一个函数，用于找到模型中所有的线性层的名称
     def find_all_linear_names(model):
-        cls = bnb.nn.Linear4bit
+        cls = nn.Linear
         lora_module_names = set()
         for name, module in model.named_modules():  # 遍历模型中的所有模块
             if isinstance(module, cls):  # 如果模块是线性层
