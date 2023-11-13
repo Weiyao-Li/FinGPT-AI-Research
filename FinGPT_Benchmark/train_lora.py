@@ -142,6 +142,7 @@ def main(args):
 
     # 获取所有的线性层的名称
     modules = find_all_linear_names(model)
+    print("linear layers", modules)
 
     # setup peft for lora
     peft_config = LoraConfig(
