@@ -124,26 +124,6 @@ def main(args):
     model.config.use_cache = (
         False
     )
-    # model = prepare_model_for_int8_training(model
-
-    # def find_target_modules(model):
-    #     # Initialize a Set to Store Unique Layers
-    #     unique_layers = set()
-    #
-    #     # Iterate Over All Named Modules in the Model
-    #     for name, module in model.named_modules():
-    #         # Check if the Module Type Contains 'Linear'
-    #         if "Linear" in str(type(module)):
-    #             # Extract the Type of the Layer
-    #             layer_type = name.split('.')[-1]
-    #
-    #             # Add the Layer Type to the Set of Unique Layers
-    #             unique_layers.add(layer_type)
-    #
-    #     # Return the Set of Unique Layers Converted to a List
-    #     return list(unique_layers)
-    #
-    # modules = find_target_modules(model)
 
     # setup peft for lora
     peft_config = LoraConfig(
@@ -153,7 +133,6 @@ def main(args):
         lora_alpha=32,
         lora_dropout=0.1,
         target_modules=lora_module_dict[args.base_model],
-        # target_modules=modules,
         bias='none',
     )
     model = get_peft_model(model, peft_config)
@@ -206,7 +185,7 @@ if __name__ == "__main__":
     parser.add_argument("--scheduler", default='linear', type=str)
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)
-    parser.add_argument("--load_best_model", default='False', type=bool)
+    parser.add_argument("--load_best_model", default='True', type=bool)
     parser.add_argument("--eval_steps", default=0.1, type=float)    
     parser.add_argument("--from_remote", default=False, type=bool)    
     args = parser.parse_args()
