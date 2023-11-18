@@ -35,8 +35,8 @@ def change_target(x):
 
 def test_nwgi(args, model, tokenizer, prompt_fun=None):
     batch_size = args.batch_size
-    dataset = load_dataset('oliverwang15/news_with_gpt_instructions')
-    # dataset = load_from_disk('../data/news_with_gpt_instructions/')
+    # dataset = load_dataset('oliverwang15/news_with_gpt_instructions')
+    dataset = load_from_disk('../data/news_with_gpt_instructions/')
     dataset = dataset['test'].to_pandas()
     dataset['output'] = dataset['label'].apply(lambda x:dic[x])
 
