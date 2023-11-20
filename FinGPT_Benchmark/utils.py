@@ -151,7 +151,7 @@ def parse_model_name(name, from_remote=False):
         'falcon': ('tiiuae/falcon-7b', 'base_models/falcon-7b'),
         'internlm': ('internlm/internlm-7b', 'base_models/internlm-7b'),
         'qwen': ('Qwen/Qwen-7B', 'base_models/Qwen-7B'),
-        'baichuan': ('baichuan-inc/Baichuan2-7B-Base', 'base_models/Baichuan2-7B-Base'),
+        'baichuan': ('baichuan-inc/Baichuan2-7B-Base', 'base_models/Baichuan2-13B-Base'),
         'mpt': ('cekal/mpt-7b-peft-compatible', 'base_models/mpt-7b-peft-compatible'),
         'bloom': ('bigscience/bloom-7b1', 'base_models/bloom-7b1')
     }
