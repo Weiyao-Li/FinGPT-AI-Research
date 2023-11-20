@@ -70,7 +70,7 @@ def main(args):
         model.resize_token_embeddings(len(tokenizer))
     
     # Load training and testing datasets
-    dataset_list = load_dataset(args.dataset, args.from_rmeote)
+    dataset_list = load_dataset(args.dataset, args.from_remote)
     dataset_train = datasets.concatenate_datasets([d['train'] for d in dataset_list]).shuffle(seed=42)
     
     if args.test_dataset:
