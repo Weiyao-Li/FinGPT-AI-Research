@@ -46,16 +46,17 @@ def main(args):
 
     # Load the pre-trained causal language model
     model = AutoModelForCausalLM.from_pretrained(
-        "Baichuan2-7B-Base",
+        model_name,
         # load_in_8bit=True,
         # device_map="auto",
+        trust_remote_code=True
     )
     # Print model architecture for the first process in distributed training
     if args.local_rank == 0:
         print(model)
 
     # Load tokenizer associated with the pre-trained model
-    tokenizer = AutoTokenizer.from_pretrained("Baichuan2-7B-Base")
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 
     # Apply model specific tokenization settings
     if args.base_model != 'mpt':
