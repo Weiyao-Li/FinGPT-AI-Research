@@ -185,7 +185,7 @@ if __name__ == "__main__":
     parser.add_argument("--scheduler", default='linear', type=str)
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)
-    parser.add_argument("--load_best_model", default='False', type=bool)
+    parser.add_argument("--load_best_model", default='True', type=bool)
     parser.add_argument("--eval_steps", default=0.1, type=float)    
     parser.add_argument("--from_remote", default=False, type=bool)    
     args = parser.parse_args()
