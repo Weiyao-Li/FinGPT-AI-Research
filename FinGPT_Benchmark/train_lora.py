@@ -50,13 +50,14 @@ def main(args):
         model_name,
         # load_in_8bit=True,
         # device_map="auto",
+        trust_remote_code=True
     )
     # Print model architecture for the first process in distributed training
     if args.local_rank == 0:
         print(model)
 
     # Load tokenizer associated with the pre-trained model
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 
     # Apply model specific tokenization settings
     if args.base_model != 'mpt':
@@ -70,7 +71,7 @@ def main(args):
         model.resize_token_embeddings(len(tokenizer))
     
     # Load training and testing datasets
-    dataset_list = load_dataset(args.dataset, args.from_remote)
+    dataset_list = load_dataset(args.dataset, args.from_rmeote)
     dataset_train = datasets.concatenate_datasets([d['train'] for d in dataset_list]).shuffle(seed=42)
     
     if args.test_dataset:
