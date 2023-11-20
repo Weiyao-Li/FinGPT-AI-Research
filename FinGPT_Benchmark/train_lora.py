@@ -41,7 +41,8 @@ def main(args):
     """
 
     # Parse the model name and determine if it should be fetched from a remote source
-    model_name = parse_model_name(args.base_model, args.from_remote)
+    # model_name = parse_model_name(args.base_model, args.from_remote)
+    model_name = 'base_models/Baichuan2-7B-Base'
     print("this is the current model name:  ", model_name)
 
     # Load the pre-trained causal language model
