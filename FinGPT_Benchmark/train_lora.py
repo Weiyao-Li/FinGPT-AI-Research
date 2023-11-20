@@ -49,14 +49,14 @@ def main(args):
         model_name,
         # load_in_8bit=True,
         # device_map="auto",
-        trust_remote_code=False
+        trust_remote_code=True
     )
     # Print model architecture for the first process in distributed training
     if args.local_rank == 0:
         print(model)
 
     # Load tokenizer associated with the pre-trained model
-    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=False)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 
     # Apply model specific tokenization settings
     if args.base_model != 'mpt':
