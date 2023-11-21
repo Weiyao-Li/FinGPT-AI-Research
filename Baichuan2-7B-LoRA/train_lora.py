@@ -46,16 +46,6 @@ class ProfCallback(TrainerCallback):
     def on_step_end(self, args, state, control, **kwargs):
         self.prof.step()
 
-# function for logger
-from transformers import TrainerCallback
-
-class LrLoggingCallback(TrainerCallback):
-    def on_step_end(self, args, state, control, **kwargs):
-        if state.global_step > 0:  # Avoid division by zero error
-            optimizer = kwargs["optimizer"]
-            for i, param_group in enumerate(optimizer.param_groups):
-                print(f"Step {state.global_step}: Learning Rate for Group {i} = {param_group['lr']}")
-
 def main(args):
 
     model_name = parse_model_name(args.base_model, args.from_remote)
@@ -138,9 +128,6 @@ def main(args):
         load_best_model_at_end=args.load_best_model_at_end,
         include_tokens_per_second=True)
 
-    # logger for lr=0
-    print("Initial Learning Rate:", training_args.learning_rate)
-
     if not args.base_model == 'mpt':
         model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
@@ -172,7 +159,7 @@ def main(args):
         data_collator=DataCollatorForSeq2Seq(tokenizer,
                                              padding=True,
                                              return_tensors="pt"),
-        callbacks=[TensorBoardCallback(writer), LrLoggingCallback()],
+        callbacks=[TensorBoardCallback(writer)],
     )
 
     # if torch.__version__ >= "2" and sys.platform != "win32":
@@ -242,7 +229,7 @@ if __name__ == "__main__":
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)
     parser.add_argument("--eval_steps", default=0.1, type=float)
-    parser.add_argument("--from_remote", default=False, type=bool)
+    parser.add_argument("--from_remote", default=True, type=bool)
     parser.add_argument("--max_steps", default=-1, type=int)
     parser.add_argument("--load_best_model_at_end", action="store_true")
     parser.add_argument("--resume_from_checkpoint", type=str, default=None)
