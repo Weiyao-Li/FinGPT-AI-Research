@@ -50,7 +50,7 @@ class ProfCallback(TrainerCallback):
 from transformers import TrainerCallback
 
 class LrLoggingCallback(TrainerCallback):
-    def on_step_begin(self, args, state, control, **kwargs):
+    def on_step_end(self, args, state, control, **kwargs):
         if state.global_step > 0:  # Avoid division by zero error
             optimizer = kwargs["optimizer"]
             for i, param_group in enumerate(optimizer.param_groups):
