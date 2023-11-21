@@ -229,7 +229,7 @@ if __name__ == "__main__":
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)
     parser.add_argument("--eval_steps", default=0.1, type=float)
-    parser.add_argument("--from_remote", default=True, type=bool)
+    parser.add_argument("--from_remote", default=False, type=bool)
     parser.add_argument("--max_steps", default=-1, type=int)
     parser.add_argument("--load_best_model_at_end", action="store_true")
     parser.add_argument("--resume_from_checkpoint", type=str, default=None)
