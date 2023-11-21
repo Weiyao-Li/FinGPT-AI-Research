@@ -1,7 +1,13 @@
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export NCCL_IGNORE_DISABLED_P2P=1
-export TRANSFORMERS_NO_ADVISORY_WARNINGS=1
-export TOKENIZERS_PARALLELISM=0
+#export CUDA_VISIBLE_DEVICES=0,1,2,3
+#export NCCL_IGNORE_DISABLED_P2P=1
+#export TRANSFORMERS_NO_ADVISORY_WARNINGS=1
+#export TOKENIZERS_PARALLELISM=0
+
+gpu_idx=$1
+run_name=$2
+base_name=$3
+
+deepspeed -i "localhost:${gpu_idx}" train_lora.py --run_name ${run_name} --base_model ${base_name} --dataset sentiment-train --max_length 512 --batch_size 4 --learning_rate 2e-4 --num_epochs 8
 
 
 

@@ -30,7 +30,7 @@ from utils import *
 
 
 # Replace with your own api_key and project name
-os.environ['WANDB_API_KEY'] = 'ecf1e5e4f47441d46822d38a3249d62e8fc94db4'
+os.environ['WANDB_API_KEY'] = '14b3cf25fb7dd1806db45e0dd2c68e83308daa04'
 os.environ['WANDB_PROJECT'] = 'fingpt-benchmark'
 
 
@@ -43,7 +43,8 @@ def main(args):
 
     # Parse the model name and determine if it should be fetched from a remote source
     model_name = parse_model_name(args.base_model, args.from_remote)
-    
+    print("this is the current model name:  ", model_name)
+
     # Load the pre-trained causal language model
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
@@ -186,7 +187,7 @@ if __name__ == "__main__":
     parser.add_argument("--scheduler", default='linear', type=str)
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)
-    parser.add_argument("--load_best_model", default='False', type=bool)
+    parser.add_argument("--load_best_model", default='True', type=bool)
     parser.add_argument("--eval_steps", default=0.1, type=float)    
     parser.add_argument("--from_remote", default=False, type=bool)    
     args = parser.parse_args()
