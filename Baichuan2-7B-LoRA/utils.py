@@ -73,7 +73,7 @@ def tokenize(args, tokenizer, feature):
     }
 
 
-def parse_model_name(name, from_remote=False):
+def parse_model_name(name, from_remote=True):
     
     if name == 'chatglm2':
         return 'THUDM/chatglm2-6b' if from_remote else 'base_models/chatglm2-6b'
