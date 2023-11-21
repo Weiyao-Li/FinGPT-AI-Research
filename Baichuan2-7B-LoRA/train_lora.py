@@ -46,6 +46,15 @@ class ProfCallback(TrainerCallback):
     def on_step_end(self, args, state, control, **kwargs):
         self.prof.step()
 
+# function for logger
+from transformers import TrainerCallback
+
+class LrLoggingCallback(TrainerCallback):
+    def on_step_begin(self, args, state, control, **kwargs):
+        if state.global_step > 0:  # Avoid division by zero error
+            optimizer = kwargs["optimizer"]
+            for i, param_group in enumerate(optimizer.param_groups):
+                print(f"Step {state.global_step}: Learning Rate for Group {i} = {param_group['lr']}")
 
 def main(args):
 
@@ -128,6 +137,10 @@ def main(args):
         max_steps=args.max_steps,
         load_best_model_at_end=args.load_best_model_at_end,
         include_tokens_per_second=True)
+
+    # logger for lr=0
+    print("Initial Learning Rate:", training_args.learning_rate)
+
     if not args.base_model == 'mpt':
         model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
@@ -159,7 +172,7 @@ def main(args):
         data_collator=DataCollatorForSeq2Seq(tokenizer,
                                              padding=True,
                                              return_tensors="pt"),
-        callbacks=[TensorBoardCallback(writer)],
+        callbacks=[TensorBoardCallback(writer), LrLoggingCallback()],
     )
 
     # if torch.__version__ >= "2" and sys.platform != "win32":
