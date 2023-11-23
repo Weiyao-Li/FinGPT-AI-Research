@@ -115,8 +115,8 @@ def main(args):
         lr_scheduler_type=args.scheduler,
         save_steps=args.eval_steps,
         eval_steps=args.eval_steps,
-        fp16=True,
-        # bf16=True,
+        # fp16=True,
+        bf16=True,
         # fp16_full_eval=True,
         deepspeed=args.ds_config,
         evaluation_strategy=args.evaluation_strategy,
@@ -203,7 +203,7 @@ if __name__ == "__main__":
                         choices=[
                             'chatglm2', 'llama2', 'llama2-13b', 'falcon',
                             'internlm', 'internlm-20b', 'qwen', 'mpt', 'bloom',
-                            'baichuan', 'Qwen'
+                            'baichuan', 'qwen'
                         ])
     parser.add_argument("--max_length", default=512, type=int)
     parser.add_argument("--batch_size",
@@ -224,7 +224,7 @@ if __name__ == "__main__":
                         help="dataloader workers")
     parser.add_argument("--log_interval", default=20, type=int)
     parser.add_argument("--warmup_ratio", default=0.05, type=float)
-    parser.add_argument("--ds_config", default='./config_new.json', type=str)
+    parser.add_argument("--ds_config", default='./ds_config_zero2.json', type=str)
     parser.add_argument("--scheduler", default='linear', type=str)
     parser.add_argument("--instruct_template", default='default')
     parser.add_argument("--evaluation_strategy", default='steps', type=str)

@@ -17,7 +17,6 @@ lora_module_dict = {
     'qwen': ["c_attn"],
     'mpt': ['Wqkv'],
     'baichuan': ['W_pack'],
-    'Qwen': []
 }
 
 
