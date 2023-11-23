@@ -1,3 +1,3 @@
-# sinogpt
+# Baichuan2-7B
 
-sinogpt训练相关代码
+Baichuan LoRA Fine-tuning
