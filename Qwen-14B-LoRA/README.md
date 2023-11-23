@@ -1,3 +1,3 @@
-# sinogpt
+# Qwen-14B
 
-sinogpt训练相关代码
+LoRA Fine-tuning
