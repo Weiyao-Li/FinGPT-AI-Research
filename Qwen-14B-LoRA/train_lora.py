@@ -203,7 +203,7 @@ if __name__ == "__main__":
                         choices=[
                             'chatglm2', 'llama2', 'llama2-13b', 'falcon',
                             'internlm', 'internlm-20b', 'qwen', 'mpt', 'bloom',
-                            'baichuan', 'qwen'
+                            'baichuan'
                         ])
     parser.add_argument("--max_length", default=512, type=int)
     parser.add_argument("--batch_size",
