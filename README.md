@@ -11,7 +11,7 @@ Employed a base model(ChatGLM2-6B) to follow the LoRA training process. Compared
 ### Base Model Comparison
 Conducted experiments with multiple base models for LoRA training, including InternLM, Falcon, llama2, and ChatGLM2. Compared their respective performances. 
 
-### Related Articles
+### Articles of My Work
 
 - [LoRA, Financial Sentimental Analysis with Baichuan2–7B](https://medium.com/@nolanwyl/financial-sentimental-analysis-with-baichuan2-7b-ad1a49ef81a1)
 
